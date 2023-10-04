@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  
   //local state variable
 
   const [restaurant, setRestaurant] = useState([]);
@@ -20,6 +19,8 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.765844&lng=83.3732&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
+    // console.log(json);
+
     setRestaurant(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -42,8 +43,10 @@ const Body = () => {
   };
 
   const handleFilter = () => {
-    let filteredRestaurant = restaurant.filter((res) => res.info.avgRating >= 4);
-    setRestaurant(filteredRestaurant);
+    let filteredRestaurant = restaurant.filter(
+      (res) => res.info.avgRating > 4
+    );
+    setFilteredRestaurant(filteredRestaurant);
   };
 
   return restaurant.length === 0 ? (
@@ -65,7 +68,7 @@ const Body = () => {
         <button onClick={handleFilter}>Top Restaurant</button>
       </div>
       <div className="restaurant-cntnr">
-        {filteredRestaurant?.map((restaurant) => (
+        {filteredRestaurant.map((restaurant) => (
           //Not using Key(not acceptable) <<<< Use Index as key(bad practice) <<<< Unique Id as key (perfect)
           <Card key={restaurant?.info.id} resData={restaurant?.info} />
         ))}

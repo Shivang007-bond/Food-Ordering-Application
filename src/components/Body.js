@@ -1,10 +1,10 @@
 import Card from "./Card";
 import { useEffect, useState } from "react";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
   //local state variable
-
   const [restaurant, setRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
@@ -29,6 +29,16 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false) {
+    return (
+      <div className="about-cntnr">
+        <h1>Unable to load data. Looks like you're offline , check your internet connection</h1>
+      </div>
+    )
+  }
 
   const handleChange = (e) => {
     setSearchText(e.target.value);

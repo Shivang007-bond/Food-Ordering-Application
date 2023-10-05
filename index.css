@@ -127,32 +127,34 @@ button {
 .button {
   padding: 0px 20px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .button:hover {
-  background-color: black;
+  background-color: rgb(0, 0, 29);
   color: white;
 }
 
-.about-cntnr{
+.about-cntnr {
   background-color: #f0f0f0;
   box-shadow: 2px 2px 4px 4px rgb(115, 115, 115);
   border-radius: 10px;
+  padding: 20px;
   margin: 30px;
+  text-align: center;
 }
 
-.user-card{
+.user-card {
   padding: 20px;
   text-align: center;
 }
 
-.profile-img{
+.profile-img {
   width: 250px;
   border-radius: 50%;
 }
 
-.user-card-text{
+.user-card-text {
   color: rgb(0, 0, 29);
   font-size: 16px;
   font-weight: 500;

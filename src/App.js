@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 // import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import Shimmer from "./components/Shimmer";
 
 // import Grocery from "./components/Grocery";
 
@@ -21,6 +22,7 @@ const About = lazy(() => import("./components/About"));
 const Grocery = lazy(() => import("./components/Grocery"));
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
 
 const App = () => {
   return (
@@ -44,7 +46,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={ <Shimmer /> }>
             <About />
           </Suspense>
         ),
@@ -56,7 +58,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={ <Shimmer /> }>
             <Grocery />
           </Suspense>
         ),

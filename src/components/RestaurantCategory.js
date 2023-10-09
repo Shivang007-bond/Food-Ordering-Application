@@ -12,7 +12,7 @@ function RestaurantCategory({ data }) {
     <div>
       {/* Accordian Header*/}
       <div
-        className="w-6/12 bg-blue-400 p-3 my-4 mx-auto shadow-lg rounded-md text-white cursor-pointer"
+        className="w-6/12 bg-blue-500 p-3 my-4 mx-auto shadow-lg rounded-md text-white cursor-pointer"
         onClick={handleClick}
       >
         <div className="flex justify-between">

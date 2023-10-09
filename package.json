@@ -1,8 +1,7 @@
 {
   "name": "reactfromscratch",
   "version": "1.0.0",
-  "description": "React tutorial",
-  "main": "App.js",
+  "description": "Food Ordering App",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",

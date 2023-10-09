@@ -13,9 +13,9 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex justify-between bg-gray-200 shadow-lg m-3 rounded-md">
+    <div className="flex justify-between bg-gray-700 shadow-lg m-3 rounded-md text-white">
       <div className="flex rounded-sm">
-        <img className="w-40" src={LOGO_URL} />
+        <img className="w-40 " src={LOGO_URL} />
       </div>
       <div className="flex items-center">
         <ul className="flex px-4 m-4">
@@ -35,7 +35,7 @@ const Header = () => {
           <li className="px-4">
             <Link>Cart</Link>
           </li>
-          <button className="flex px-3 py-0.5 h-8 bg-gray-700 text-cyan-50 rounded-md" onClick={toggleBtn}>
+          <button className="flex px-3 py-0.5 h-8 bg-black text-cyan-50 rounded-md" onClick={toggleBtn}>
             {loginBtn}
           </button>
         </ul>

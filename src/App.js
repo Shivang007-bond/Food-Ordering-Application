@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 // import Grocery from "./components/Grocery";
 
@@ -63,10 +64,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
-      // {
-      //   path: "/restaurant/:resID", //dynamic route
-      //   element: <RestaurantMenu />,
-      // },
+      {
+        path: "/restaurant/:resID", //dynamic route
+        element: <RestaurantMenu />,
+      },
     ],
     errorElement: <Error />,
   },

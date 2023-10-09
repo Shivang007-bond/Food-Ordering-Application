@@ -1,7 +1,8 @@
-import Card from "./Card";
+import Card, { isOpenCard } from "./Card";
 import { useEffect, useState } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   //local state variable
@@ -10,13 +11,17 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  const OpenRestaurantCard = isOpenCard(Card);
+
+  // console.log(restaurant);
+
   useEffect(() => {
     dataFetched();
   }, []);
 
   const dataFetched = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.765844&lng=83.3732&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     // console.log(json);
@@ -56,7 +61,7 @@ const Body = () => {
   };
 
   const handleFilter = () => {
-    let filteredRestaurant = restaurant.filter((res) => res.info.avgRating > 4);
+    let filteredRestaurant = restaurant.filter((res) => res.info.avgRating > 4.2);
     setFilteredRestaurant(filteredRestaurant);
   };
 
@@ -92,7 +97,17 @@ const Body = () => {
       <div className="grid grid-cols-4 ml-16">
         {filteredRestaurant.map((restaurant) => (
           //Not using Key(not acceptable) <<<< Use Index as key(bad practice) <<<< Unique Id as key (perfect)
-          <Card key={restaurant?.info.id} resData={restaurant?.info} />
+
+          <Link
+            key={restaurant?.info.id}
+            to={"/restaurant/" + restaurant?.info.id}
+          >
+            {restaurant?.info.isOpen ? (
+              <OpenRestaurantCard resData={restaurant?.info} />
+            ) : (
+              <Card resData={restaurant?.info} />
+            )}
+          </Link>
         ))}
       </div>
     </div>

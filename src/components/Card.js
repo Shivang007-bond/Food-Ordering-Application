@@ -18,4 +18,19 @@ const Card = ({ resData }) => {
   );
 };
 
+//Higher-Order Component
+// Card ==> Input -- Output ==> isOpenCard
+export const isOpenCard = (Card) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white p-2 mx-4 rounded-md bg-opacity-50"> Open Now</label>
+        <Card {...props}/>
+      </div>
+    );
+  };
+};
+
+
+
 export default Card;

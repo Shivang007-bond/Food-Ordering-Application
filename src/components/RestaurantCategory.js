@@ -1,28 +1,26 @@
-import { useState } from "react";
+
 import ItemList from "./ItemList";
 
-function RestaurantCategory({ data }) {
-  const [showItem, setShowItem] = useState(false);
+function RestaurantCategory({ data, showIndex, setShowIndex }) {
 
   const handleClick = () => {
-    setShowItem(!showItem);
+    setShowIndex();
   };
 
   return (
     <div>
       {/* Accordian Header*/}
       <div
-        className="w-6/12 bg-blue-500 p-3 my-4 mx-auto shadow-lg rounded-md text-white cursor-pointer"
+        className="w-6/12 bg-blue-400 p-3 my-4 mx-auto shadow-lg rounded-md text-white cursor-pointer"
         onClick={handleClick}
       >
         <div className="flex justify-between">
           <span className="font-bold text-white">
             {data.title} ({data.itemCards.length})
           </span>
-          <span> ⬇️ </span>
         </div>
 
-        {showItem && <ItemList items={data.itemCards} />}
+        {showIndex && <ItemList items={data.itemCards} />}
       </div>
     </div>
   );

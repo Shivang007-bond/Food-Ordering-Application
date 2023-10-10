@@ -72,7 +72,7 @@ const Body = () => {
       <div className="flex p-4 mx-4">
         <input
           type="text"
-          className="border-black border-solid p-1 mr-2 w-80 h-8"
+          className="border border-black border-solid p-1 mr-2 w-80 h-8"
           placeholder="search"
           value={searchText}
           onChange={handleChange}

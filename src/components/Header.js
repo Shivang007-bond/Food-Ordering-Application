@@ -1,10 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+
+  const {loggedInUser} = useContext(UserContext)
+  // console.log(data);
 
   const toggleBtn = () => {
     loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
@@ -38,6 +42,9 @@ const Header = () => {
           <button className="flex px-3 py-0.5 h-8 bg-black text-cyan-50 rounded-md" onClick={toggleBtn}>
             {loginBtn}
           </button>
+          <li className="px-4 font-extrabold">
+            <Link>{loggedInUser}</Link>
+          </li>
         </ul>
       </div>
     </div>

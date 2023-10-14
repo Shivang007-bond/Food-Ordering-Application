@@ -1,7 +1,16 @@
+import { useDispatch } from "react-redux";
 import { RES_LOGO } from "../utils/constants";
+import { addItem } from "../utils/CartSlice";
 
 function ItemList({ items }) {
-//   console.log(items);
+  //   console.log(items);
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    //Dispatch an action
+    dispatch(addItem(item)); //whatever is passed in it , will go inside the reducer function
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -22,7 +31,10 @@ function ItemList({ items }) {
           </div>
           <div className="w-3/12 p-2">
             <div className="absolute">
-              <button className="p-1 mx-14 my-auto bg-white bg-opacity-40 text-black font-semibold shadow-lg rounded-md">
+              <button
+                className="p-1 mx-14 my-auto bg-white bg-opacity-40 text-black font-semibold shadow-lg rounded-md"
+                onClick={() => handleAddItem(item)}
+              >
                 Add +
               </button>
             </div>

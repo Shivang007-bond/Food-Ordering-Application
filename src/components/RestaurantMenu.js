@@ -29,7 +29,7 @@ function RestaurantMenu() {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div className="text-center">

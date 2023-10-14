@@ -7,11 +7,14 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 // import About from "./components/About";
 import Contact from "./components/Contact";
+import Cart from "./components/Cart";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { useEffect, useState, useContext } from "react";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import Store from "./utils/Store";
 
 // import Grocery from "./components/Grocery";
 
@@ -25,6 +28,7 @@ const About = lazy(() => import("./components/About"));
 const Grocery = lazy(() => import("./components/Grocery"));
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Cart from "./components/Cart";
 
 const App = () => {
   const [userName, setUserName] = useState("");
@@ -40,13 +44,15 @@ const App = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName }}>
-      <div className="app-cntnr">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={Store}>
+      <UserContext.Provider value={{ loggedInUser: userName }}>
+        <div className="app-cntnr">
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -82,6 +88,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resID", //dynamic route
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

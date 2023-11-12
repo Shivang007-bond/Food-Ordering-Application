@@ -10,7 +10,7 @@ const Header = () => {
 
   //Subscribing the STORE using SELECTOR
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const { loggedInUser } = useContext(UserContext);
   // console.log(data);

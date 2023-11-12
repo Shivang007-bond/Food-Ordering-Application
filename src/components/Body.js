@@ -30,6 +30,10 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
+    // console.log(
+    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
+
     setFilteredRestaurant(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -61,7 +65,9 @@ const Body = () => {
   };
 
   const handleFilter = () => {
-    let filteredRestaurant = restaurant.filter((res) => res.info.avgRating > 4.2);
+    let filteredRestaurant = restaurant.filter(
+      (res) => res.info.avgRating > 4.2
+    );
     setFilteredRestaurant(filteredRestaurant);
   };
 
